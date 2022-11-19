@@ -9,15 +9,15 @@
 				<span><h1>ГОСТ-28147-89</h1></span>
 	</header>
 	<h2>  </h2>
-	<script src="js/main.js"></script>
 	<div class="row">
 		<div class="col-lg-6 col-sm-11">
 				<textarea rows="7" id="text-to-convert" placeholder="Текст..."></textarea>
 				<textarea rows="7" id="encrypt-message" placeholder="Зашифрованный текст..."></textarea> <br> <br>
 				<label>Ключ шифрования: (длиной 8 символов)</label><br>
 				<input type="text" id="key" placeholder="Ключ шифрования"><br><br>
-				<input type="button" value="Зашифровать" onclick="encryptMessage()">
-				<input type="button" value="Расшифровать" onclick="decryptMessage()"><br><br>
+				<input type="button" value="Зашифровать" id="encryptButton">
+				<input type="button" value="Расшифровать" id="decryptButton"><br><br>
 		</div>
 	</div>
+	<script type="module" src="./js/main.js"></script>
 </body>
