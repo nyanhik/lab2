@@ -31,7 +31,7 @@ class Gost {
 
      //Метод блочного шифрования в режиме простой замены
 
-    crypt = (text, mode) => { //входной текст + Режим работы ключа (encrypt/decrypt)
+    crypt(text, mode) { //входной текст + Режим работы ключа (encrypt/decrypt)
         let xorResult = '';
         let result = '';
 
@@ -57,7 +57,7 @@ class Gost {
         return string;
     }
 
-    exchangeChars = (input) => { //разделение 32-х битного блока на 4-х битные блоки +  заменяем по таблице
+    exchangeChars(input) { //разделение 32-х битного блока на 4-х битные блоки +  заменяем по таблице
         return parseInt(this.padString(input.toString(2), '0', 32).replace(/(....)/g, function (match) {
             return parseInt(match, 2).toString(16);
         }).split('').reverse().map((item, i) => {
@@ -82,7 +82,7 @@ class Gost {
 
     }
 
-    mod2_32 = (a, b) => { //сложение по модулю 32
+    mod2_32(a, b) { //сложение по модулю 32
         let result = (a + b).toString(2);
 
         return result.length > 32 ? parseInt(result.slice(1), 2) : parseInt(result, 2);
@@ -94,9 +94,7 @@ class Gost {
 
 function encryptMessage() {
     let enterText = document.getElementById("text-to-convert").value;
-  	console.log(enterText);
   	let key = document.getElementById("key").value;
-  	console.log(key);
   	let EncryptedMessage = new Gost(key);
   	let encryptMessage = EncryptedMessage.crypt(enterText,'encrypt');
 
@@ -105,9 +103,7 @@ function encryptMessage() {
 
 function decryptMessage() {
   	let encryptMessage = document.getElementById("encrypt-message").value;
-  	console.log(encryptMessage);
   	let key = document.getElementById("key").value;
-  	console.log(key);
   	let EncryptedMessage = new Gost(key);
   	let enterText = EncryptedMessage.crypt(encryptMessage,'decrypt');
 
